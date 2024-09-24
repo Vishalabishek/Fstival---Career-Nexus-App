@@ -69,8 +69,13 @@ class _ResumeBuildingPageState extends State<ResumeBuildingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Build Your Resume'),
-        backgroundColor: Colors.teal,
+        title: Text('Build Your Resume',style: TextStyle(
+          color: Colors.white
+        ),),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Set the back button color here
+        ),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -83,7 +88,7 @@ class _ResumeBuildingPageState extends State<ResumeBuildingPage> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.teal,
+                  color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -107,7 +112,7 @@ class _ResumeBuildingPageState extends State<ResumeBuildingPage> {
               else
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.teal,
+                    primary: Colors.black,
                     padding: EdgeInsets.symmetric(vertical: 15),
                     textStyle: TextStyle(fontSize: 18),
                     shape: RoundedRectangleBorder(

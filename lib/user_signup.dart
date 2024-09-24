@@ -82,8 +82,13 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
-        backgroundColor: Colors.blueAccent,
+        title: Text('Sign Up',style: TextStyle(
+          color: Colors.white
+        ),),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Set the back button color here
+        ),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -96,7 +101,7 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent,
+                  color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -105,7 +110,7 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
                 onTap: _pickImage,
                 child: CircleAvatar(
                   radius: 60,
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Colors.black,
                   child: _profileImage != null
                       ? ClipOval(
                           child: Image.file(
@@ -176,7 +181,7 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent,
+                  color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -202,7 +207,7 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
               else
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blueAccent,
+                    primary: Colors.black,
                     padding: EdgeInsets.symmetric(vertical: 15),
                     textStyle: TextStyle(fontSize: 18),
                     shape: RoundedRectangleBorder(
@@ -217,7 +222,9 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Already have an account? Login'),
+                child: Text('Already have an account? Login',style: TextStyle(
+                  color: Colors.blue
+                ),),
               ),
             ],
           ),
@@ -241,7 +248,7 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
         ),
-        prefixIcon: Icon(icon, color: Colors.blueAccent),
+        prefixIcon: Icon(icon, color: Colors.black),
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: Colors.white,
@@ -265,7 +272,7 @@ class _UserSignUpScreenState extends State<UserSignUpScreen> {
         ),
         Text(
           gender,
-          style: TextStyle(fontSize: 16, color: Colors.blueAccent),
+          style: TextStyle(fontSize: 16, color: Colors.black),
         ),
       ],
     );

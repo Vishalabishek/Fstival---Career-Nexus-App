@@ -38,8 +38,13 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
-        backgroundColor: Colors.blueAccent,
+        title: Text('Login',style: TextStyle(
+          color: Colors.white
+        ),),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Set the back button color here
+        ),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -53,13 +58,13 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
+                    color: Colors.black,
                   ),
                 ),
                 SizedBox(height: 20),
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.black,
                   child: Icon(
                     Icons.person,
                     size: 50,
@@ -105,7 +110,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                 else
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blueAccent,
+                      primary: Colors.black,
                       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                       textStyle: TextStyle(fontSize: 18),
                       shape: RoundedRectangleBorder(
@@ -129,7 +134,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
