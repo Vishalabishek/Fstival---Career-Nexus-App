@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:lottie/lottie.dart';
 
 class ResumeBuildingPage extends StatefulWidget {
   @override
@@ -83,6 +84,14 @@ class _ResumeBuildingPageState extends State<ResumeBuildingPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Center(
+                child: Lottie.asset(
+                'assets/resume.json',  // Replace with your Lottie animation file
+                width: 175,  // Adjust the size of the Lottie animation
+                height: 175,
+                fit: BoxFit.cover,
+              ),  
+              ),
               Text(
                 'Resume Builder',
                 style: TextStyle(

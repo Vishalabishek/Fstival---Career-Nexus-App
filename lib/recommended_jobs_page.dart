@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lottie/lottie.dart';  // Import the Lottie package
 
 class RecommendedJobsPage extends StatefulWidget {
   @override
@@ -71,6 +72,17 @@ class _RecommendedJobsPageState extends State<RecommendedJobsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Add Lottie animation at the top
+            Center(
+              child: Lottie.asset(
+                'assets/job.json',  // Replace with your Lottie animation file
+                width: 175,  // Adjust the size of the Lottie animation
+                height: 175,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 10),  // Add spacing between the Lottie and the rest of the UI
+            
             Text(
               'Enter your skills (comma-separated):',
               style: TextStyle(fontSize: 18),
@@ -156,6 +168,165 @@ class _RecommendedJobsPageState extends State<RecommendedJobsPage> {
   }
 }
 
+/*import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+class RecommendedJobsPage extends StatefulWidget {
+  @override
+  _RecommendedJobsPageState createState() => _RecommendedJobsPageState();
+}
+
+class _RecommendedJobsPageState extends State<RecommendedJobsPage> {
+  List<dynamic> recommendedJobs = [];
+  bool isLoading = false;
+  final TextEditingController _skillsController = TextEditingController();
+
+  Future<void> fetchRecommendedJobs(List<String> userSkills) async {
+    final String apiUrl = "http://127.0.0.1:5000/recommend";  // Replace with your Flask API URL
+
+    var body = jsonEncode({'skills': userSkills});
+
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {"Content-Type": "application/json"},
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        setState(() {
+          recommendedJobs = json.decode(response.body);
+          isLoading = false;
+        });
+      } else {
+        print("Error: ${response.statusCode}");
+        setState(() {
+          isLoading = false;
+        });
+      }
+    } catch (error) {
+      print("Error fetching jobs: $error");
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  void submitSkills() {
+    String skillsInput = _skillsController.text.trim();
+    
+    if (skillsInput.isNotEmpty) {
+      List<String> userSkills = skillsInput.split(',').map((skill) => skill.trim()).toList();
+      fetchRecommendedJobs(userSkills);
+    } else {
+      print("No skills provided");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Recommended Jobs', style: TextStyle(color: Colors.white)),
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            
+            Text(
+              'Enter your skills (comma-separated):',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: _skillsController,
+              decoration: InputDecoration(
+                hintText: 'e.g., Python, Java, SQL',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: submitSkills,
+              child: Text('Get Recommendations', style: TextStyle(color: Colors.white)),
+              style: ElevatedButton.styleFrom(primary: Colors.black),
+            ),
+            SizedBox(height: 20),
+            isLoading
+                ? Center(child: CircularProgressIndicator())
+                : Expanded(
+                    child: recommendedJobs.isEmpty
+                        ? Text('No recommendations yet. Enter your skills and press Get Recommendations.')
+                        : ListView.builder(
+                            itemCount: recommendedJobs.length,
+                            itemBuilder: (context, index) {
+                              final job = recommendedJobs[index];
+                              return Card(
+                                margin: EdgeInsets.symmetric(vertical: 8),
+                                elevation: 3,
+                                child: InkWell(
+                                  onTap: () {
+                                    // Add your onTap functionality here
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                job['Job Title'],
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              SizedBox(height: 4),
+                                              Text(
+                                                'Company: ${job['Company'] ?? "Unknown"}',
+                                                style: TextStyle(color: Colors.grey[700]),
+                                              ),
+                                              Text(
+                                                'Location: ${job['Location'] ?? "Remote"}',
+                                                style: TextStyle(color: Colors.grey[700]),
+                                              ),
+                                              SizedBox(height: 4),
+                                              Text(
+                                                "Similarity: ${job['Similarity'].toStringAsFixed(2)}",
+                                                style: TextStyle(color: Colors.green),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Icon(Icons.arrow_forward, color: Colors.black),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                  ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+*/
 
 /*
 import 'dart:convert';

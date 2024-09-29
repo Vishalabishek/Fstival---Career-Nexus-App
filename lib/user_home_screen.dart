@@ -310,6 +310,8 @@ import 'package:flutter/material.dart';
 import 'resume_building_page.dart';
 import 'recommended_jobs_page.dart';
 import 'user_login.dart';
+import 'package:lottie/lottie.dart';
+
 
 class UserHomeScreen extends StatefulWidget {
   final String username;
@@ -363,7 +365,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: [              
                   CircleAvatar(
                     radius: 30,
                     backgroundColor: Color.fromARGB(255, 255, 255, 255),
@@ -460,6 +462,16 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           children: [
             Center(
               child: CircleAvatar(
+  radius: 100,
+  backgroundColor: Colors.white,
+  child: Lottie.asset(
+    'assets/animation.json',  
+    width: 250,
+    height:250,
+    fit: BoxFit.cover,
+  ),
+),
+              /*CircleAvatar(
                 radius: 60,
                 backgroundColor: Colors.black,
                 child: Icon(
@@ -467,9 +479,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   size: 60,
                   color: Colors.white,
                 ),
-              ),
+              ),*/
             ),
-            SizedBox(height: 20),
+            //SizedBox(height: 20),
             Center(
               child: Text(
                 'Welcome, ${widget.username}!',
@@ -492,10 +504,18 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   'Build Your Resume',
                   style: TextStyle(color: Colors.white),
                 ),
-                trailing: Icon(
+                trailing: SizedBox(
+      width: 50,  // Adjust the size based on your Lottie file size
+      height: 50,
+      child: Lottie.asset(
+        'assets/resume.json',  // Replace with your Lottie file path
+        fit: BoxFit.cover,
+      ),
+    ),
+                /*trailing: Icon(
                   Icons.build,
                   color: Colors.white,
-                ),
+                ),*/
                 onTap: () {
                   Navigator.push(
                     context,
@@ -515,10 +535,18 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   'Recommended Jobs',
                   style: TextStyle(color: Colors.white),
                 ),
-                trailing: Icon(
+                trailing: SizedBox(
+      width: 50,  // Adjust the size based on your Lottie file size
+      height: 50,
+      child: Lottie.asset(
+        'assets/job.json',  // Replace with your Lottie file path
+        fit: BoxFit.cover,
+      ),
+    ),
+                /*trailing: Icon(
                   Icons.recommend,
                   color: Colors.white,
-                ),
+                ),*/
                 onTap: () {
                   Navigator.push(
                     context,

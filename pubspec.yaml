@@ -34,6 +34,7 @@ dependencies:
   image_picker: ^0.8.5+3
   pdf: ^3.6.0  # Add the pdf package for PDF generation
   path_provider: ^2.0.10 
+  lottie: ^2.2.0 
   csv: ^5.0.0
 
 
@@ -75,6 +76,10 @@ flutter:
     - assets/output-removed.csv
     - assets/job.png
     - assets/resume.jpg
+    - assets/animation.json
+    - assets/resume.json
+    - assets/job.json
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
